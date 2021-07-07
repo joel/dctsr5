@@ -24,5 +24,8 @@ bin/rails server -p 3008 --early-hints -b 0.0.0.0
 bin/rails test
 bin/rails test:system
 
+docker compose up --build
 
+docker compose exec web bin/rails test:system
 
+RAILS_ENV=test SELENIUM_HOST=127.0.0.1 SELENIUM_PORT=4444 TEST_APP_HOST=127.0.0.1 TEST_APP_PORT=3001 bin/rails test:system

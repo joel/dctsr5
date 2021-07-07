@@ -44,8 +44,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     arel (9.0.0)
     bindex (0.8.1)
     builder (3.2.4)
@@ -59,9 +57,6 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (3.0.0)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     erubi (1.10.0)
@@ -69,7 +64,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    io-like (0.3.1)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     loofah (2.10.0)
@@ -80,8 +74,12 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.0)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     nio4r (2.5.7)
+    nokogiri (1.11.7)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.7-x86_64-darwin)
       racc (~> 1.4)
     public_suffix (4.0.6)
@@ -143,12 +141,12 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  aarch64-linux
   x86_64-darwin-20
 
 DEPENDENCIES
   byebug
   capybara (>= 2.15)
-  chromedriver-helper
   jbuilder (~> 2.5)
   puma (~> 3.11)
   rails (~> 5.2.6)
@@ -160,4 +158,4 @@ RUBY VERSION
    ruby 2.7.3p183
 
 BUNDLED WITH
-   2.2.16
+   2.2.22
