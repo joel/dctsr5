@@ -29,7 +29,7 @@ bin/rails test
 bin/rails test:system
 
 # Start Services
-docker compose wait-middleware --build
+docker compose up wait-middleware --build
 
 docker compose logs --follow
 
