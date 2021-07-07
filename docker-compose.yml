@@ -21,7 +21,8 @@ services:
     tty: true
 
   selenium:
-    image: selenium/standalone-chrome:4.0.0-rc-1-prerelease-20210618
+    # Ubuntu 20.04.1 LTS
+    image: selenium/standalone-chrome:3.141.59-20210422 # Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
     environment:
       - JAVA_OPTS=-Dwebdriver.chrome.whitelistedIps=
     volumes:
@@ -29,19 +30,19 @@ services:
     stdin_open: true
     tty: true
 
-  # wait-middleware:
-  #   build: .
-  #   environment:
-  #     WAIT_HOSTS: web:3001,selenium:4444
-  #     WAIT_TIMEOUT: 40
-  #     WAIT_HOST_CONNECT_TIMEOUT: 30
-  #     WAIT_BEFORE: 0
-  #     WAIT_AFTER: 0
-  #     WAIT_SLEEP_INTERVAL: 1
-  #   depends_on:
-  #     - web
-  #     - selenium
-  #   command: /wait
+  wait-middleware:
+    build: .
+    environment:
+      WAIT_HOSTS: web:3001,selenium:4444
+      WAIT_TIMEOUT: 40
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+      WAIT_BEFORE: 0
+      WAIT_AFTER: 0
+      WAIT_SLEEP_INTERVAL: 1
+    depends_on:
+      - web
+      - selenium
+    command: /wait
 
 volumes:
   bundle_cache:

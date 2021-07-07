@@ -1,0 +1,35 @@
+name: Rails Test System
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+      - 'LICENSE'
+
+env:
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        ruby: ["2.7.3"]
+        os: [ubuntu-20.04]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Build and Start Services
+        run: |
+          docker compose wait-middleware --build
+      -
+        name: Run Test System
+        run: |
+          docker compose exec web bin/rails test:system
