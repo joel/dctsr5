@@ -30,7 +30,9 @@ services:
     tty: true
 
   wait-middleware:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       WAIT_HOSTS: web:3001,selenium:4444
       WAIT_TIMEOUT: 90
@@ -38,10 +40,9 @@ services:
       WAIT_BEFORE: 0
       WAIT_AFTER: 0
       WAIT_SLEEP_INTERVAL: 2
-    depends_on:
-      - web
-      - selenium
     command: /wait
+    stdin_open: true
+    tty: true
 
   console:
     <<: *base
