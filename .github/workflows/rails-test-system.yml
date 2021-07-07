@@ -25,7 +25,4 @@ jobs:
           docker-compose build
           docker-compose up --detach selenium
           docker-compose up --detach web
-      -
-        name: Run Test System
-        run: |
           docker-compose exec web bash -c "RAILS_ENV=test bin/rails test:system"

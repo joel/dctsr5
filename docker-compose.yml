@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-  web:
+  web: &base
     build:
       context: .
       dockerfile: Dockerfile
@@ -43,6 +43,12 @@ services:
       - web
       - selenium
     command: /wait
+
+  console:
+    <<: *base
+    stdin_open: true
+    tty: true
+    command: /bin/bash
 
 volumes:
   bundle_cache:
