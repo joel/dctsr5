@@ -26,5 +26,4 @@ jobs:
           docker-compose up --detach selenium && \
           docker-compose up --detach web && \
           docker container ls && \
-          docker-compose up wait-middleware && \
           docker-compose exec -T web bash -c "RAILS_ENV=test bin/rails test:system"
