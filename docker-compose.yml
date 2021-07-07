@@ -39,9 +39,6 @@ services:
       WAIT_BEFORE: 0
       WAIT_AFTER: 0
       WAIT_SLEEP_INTERVAL: 2
-    depends_on:
-      - web
-      - selenium
     command: /wait
 
 volumes:

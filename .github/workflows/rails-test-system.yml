@@ -29,4 +29,4 @@ jobs:
       -
         name: Run Test System
         run: |
-          docker compose exec web bin/rails test:system
+          docker-compose exec web bin/rails test:system
