@@ -12,29 +12,15 @@ ARG ARG_APP_PATH=/app
 
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
       build-essential nodejs curl
-# Ensure that our apt package list is updated and install a few
-# packages to ensure that we can compile assets (nodejs).
-
 WORKDIR ${ARG_APP_PATH}
 
-COPY Gemfile ${ARG_APP_PATH}
-COPY Gemfile.lock ${ARG_APP_PATH}
-# Add app files into docker image
-
-COPY ./docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh"]
-# Add bundle entry point to handle bundle cache
-
-ENV BUNDLE_PATH=/bundle \
-    BUNDLE_BIN=/bundle/bin \
-    GEM_HOME=/bundle
-ENV PATH="${BUNDLE_BIN}:${PATH}"
-# Bundle installs with binstubs to our custom /bundle/bin volume path. Let system use those stubs.
+COPY . .
 
 RUN gem update --system ${ARG_RUBYGEMS_VERSION}
 
 RUN gem install bundler:${ARG_BUNDLER_VERSION}
+
+RUN bin/bundle install
 
 RUN curl -SL https://github.com/ufoscout/docker-compose-wait/releases/download/${ARG_COMPOSE_WAIT_VER}/wait -o /wait
 RUN chmod +x /wait
