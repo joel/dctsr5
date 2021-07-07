@@ -22,7 +22,7 @@ jobs:
       -
         name: Build and Start Services
         run: |
-          docker-compose build wait-middleware
+          docker-compose build
           docker-compose up wait-middleware
       -
         name: Run Test System
