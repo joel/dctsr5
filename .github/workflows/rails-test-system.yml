@@ -22,8 +22,5 @@ jobs:
       -
         name: Build and Start Services
         run: |
-          docker-compose build && \
-          docker-compose up --detach selenium && \
-          docker-compose up --detach web && \
-          docker container ls && \
+          docker-compose up start-and-wait-for-services-to-be-up && \
           docker-compose exec -T web bash -c "RAILS_ENV=test bin/rails test:system"

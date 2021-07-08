@@ -29,7 +29,7 @@ services:
     stdin_open: true
     tty: true
 
-  wait-middleware:
+  start-and-wait-for-services-to-be-up:
     build:
       context: .
       dockerfile: Dockerfile
@@ -40,6 +40,9 @@ services:
       WAIT_BEFORE: 0
       WAIT_AFTER: 0
       WAIT_SLEEP_INTERVAL: 2
+    depends_on:
+      - web
+      - selenium
     command: /wait
     stdin_open: true
     tty: true

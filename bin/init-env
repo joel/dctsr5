@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+export CURRENT=`pwd`
+export BASENAME=`basename "$CURRENT"`
+
+export SERVICE_NAME=${BASENAME} # Change as you want

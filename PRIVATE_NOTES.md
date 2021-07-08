@@ -29,9 +29,16 @@ bin/rails test
 bin/rails test:system
 
 # Start Services
-docker compose up wait-middleware --build
+
+docker compose up start-and-wait-for-services-to-be-up
 
 docker compose logs --follow
+
+docker-compose exec -T web bash -c "RAILS_ENV=test bin/rails test:system"
+
+bin/docker-compose-teardown
+
+# Other commands
 
 docker compose exec web bin/rails test:system
 
