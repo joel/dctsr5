@@ -24,10 +24,6 @@ services:
     image: selenium/standalone-chrome:3.141.59-20210422 # Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
     environment:
       - JAVA_OPTS=-Dwebdriver.chrome.whitelistedIps=
-    volumes:
-      - /dev/shm:/dev/shm
-    stdin_open: true
-    tty: true
 
   start-and-wait-for-services-to-be-up:
     build:
@@ -44,11 +40,3 @@ services:
       - web
       - selenium
     command: /wait
-    stdin_open: true
-    tty: true
-
-  console:
-    <<: *base
-    stdin_open: true
-    tty: true
-    command: /bin/bash
