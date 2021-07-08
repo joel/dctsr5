@@ -20,6 +20,12 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
+        name: Docker Version
+        run: |
+          docker --version && \
+          docker-compose --version && \
+          docker version
+      -
         name: Build and Start Services
         run: |
           docker-compose up start-and-wait-for-services-to-be-up && \
