@@ -11,7 +11,7 @@ ARG ARG_COMPOSE_WAIT_VER=2.9.0
 ARG ARG_APP_PATH=/app
 
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
-      build-essential nodejs curl
+      build-essential nodejs
 WORKDIR ${ARG_APP_PATH}
 
 COPY . .
@@ -21,6 +21,3 @@ RUN gem update --system ${ARG_RUBYGEMS_VERSION}
 RUN gem install bundler:${ARG_BUNDLER_VERSION}
 
 RUN bin/bundle install
-
-RUN curl -SL https://github.com/ufoscout/docker-compose-wait/releases/download/${ARG_COMPOSE_WAIT_VER}/wait -o /wait
-RUN chmod +x /wait
