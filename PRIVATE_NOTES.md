@@ -28,6 +28,12 @@ bin/rails server -p 3008 --early-hints -b 0.0.0.0
 bin/rails test
 bin/rails test:system
 
+# Get the code
+
+cd ~/wherever-you-want
+git clone git@github.com:joel/dctsr5.git
+gh repo clone joel/dctsr5
+
 # Start Services
 
 docker compose up start-and-wait-for-services-to-be-up
